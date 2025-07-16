@@ -5,7 +5,6 @@ import axios from "axios"; // For Axios
 import ModalBox from "./EditSkillModel.js";
 import Nav from "../../sidebar/sidebar.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
 import ReactPaginate from "react-paginate";
 import {
   faEdit,
@@ -25,10 +24,8 @@ import Navbar from "../../navbar/navbar.js";
 const SkillsModule = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [tableData, settableData] = useState([]);
-  const [modalData, setModalData] = useState(null);
   const [togle, settogle] = useState([true]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalIsOpen1, setModalIsOpen1] = useState(false);
   const [selectedskillId, setSelectedskillId] = useState(null);
   const [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
@@ -102,21 +99,21 @@ const SkillsModule = () => {
     console.log("ids", data);
     console.log("ids", data);
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete this items?"
-    );
+        "Are you sure you want to delete this items?"
+      );
     if (isConfirmed) {
-      try {
-        const response = await axios.delete(`${BASE_API_URL}skills/multiDelete`, {
-          data: data, // IDs ko data body mein bhejna
-        });
-        console.log(response.data); // Response ke saath kuch karne ke liye
-        settogle(!togle);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    } else {
-      // User canceled the action
-      console.log("Deletion canceled");
+    try {
+      const response = await axios.delete(`${BASE_API_URL}skills/multiDelete`, {
+        data: data, // IDs ko data body mein bhejna
+      });
+      console.log(response.data); // Response ke saath kuch karne ke liye
+      settogle(!togle);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    }else {
+        // User canceled the action
+        console.log("Deletion canceled");
     }
   };
   const validateForm = () => {
@@ -261,7 +258,7 @@ const SkillsModule = () => {
     console.log("", id);
   };
 
-
+  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -270,7 +267,7 @@ const SkillsModule = () => {
     const timer = setTimeout(() => setLoading(false), 500);
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []);
+  }, []); 
 
   return (
     <>
@@ -421,175 +418,154 @@ const SkillsModule = () => {
                 </div>
               </div>
             )}
-            {loading ? (
+             {loading ? (
               <div className="loading-overlay">
                 <div className="spinner"></div>
               </div>
             ) : (
-              <div className="table-responsive" class="tablediv">
-                <table className="table">
-                  <thead className="thead-light">
-                    <tr>
-                      <th scope="col" onClick={() => handleSort("id")}>
-                        {" "}
-                        ID{" "}
-                        {sortColumn === "id" && (
-                          <FontAwesomeIcon
-                            icon={
-                              sortDirection === "ascending"
-                                ? faSortUp
-                                : faSortDown
-                            }
-                          />
-                        )}
-                      </th>
-                      <th scope="col" onClick={() => handleSort("skills")}>
-                        {" "}
-                        Skills{" "}
-                        {sortColumn === "skills" && (
-                          <FontAwesomeIcon
-                            icon={
-                              sortDirection === "ascending"
-                                ? faSortUp
-                                : faSortDown
-                            }
-                          />
-                        )}
-                      </th>
-                      <th scope="col" onClick={() => handleSort("profile")}>
-                        {" "}
-                        Profile{" "}
-                        {sortColumn === "profile" && (
-                          <FontAwesomeIcon
-                            icon={
-                              sortDirection === "ascending"
-                                ? faSortUp
-                                : faSortDown
-                            }
-                          />
-                        )}
-                      </th>
-                      <th scope="col" onClick={() => handleSort("profile_id")}>
-                        {" "}
-                        Profile{" "}
-                        {sortColumn === "profile_id" && (
-                          <FontAwesomeIcon
-                            icon={
-                              sortDirection === "ascending"
-                                ? faSortUp
-                                : faSortDown
-                            }
-                          />
-                        )}
-                      </th>
-                      <th scope="col" onClick={() => handleSort("description")}>
-                        {" "}
-                        Description{" "}
-                        {sortColumn === "description" && (
-                          <FontAwesomeIcon
-                            icon={
-                              sortDirection === "ascending"
-                                ? faSortUp
-                                : faSortDown
-                            }
-                          />
-                        )}
-                      </th>
+            <div className="table-responsive" class="tablediv">
+              <table className="table">
+                <thead className="thead-light">
+                  <tr>
+                    <th scope="col" onClick={() => handleSort("id")}>
+                      {" "}
+                      ID{" "}
+                      {sortColumn === "id" && (
+                        <FontAwesomeIcon
+                          icon={
+                            sortDirection === "ascending"
+                              ? faSortUp
+                              : faSortDown
+                          }
+                        />
+                      )}
+                    </th>
+                    <th scope="col" onClick={() => handleSort("skills")}>
+                      {" "}
+                      Skills{" "}
+                      {sortColumn === "skills" && (
+                        <FontAwesomeIcon
+                          icon={
+                            sortDirection === "ascending"
+                              ? faSortUp
+                              : faSortDown
+                          }
+                        />
+                      )}
+                    </th>
+                    <th scope="col" onClick={() => handleSort("profile")}>
+                      {" "}
+                      Profile{" "}
+                      {sortColumn === "profile" && (
+                        <FontAwesomeIcon
+                          icon={
+                            sortDirection === "ascending"
+                              ? faSortUp
+                              : faSortDown
+                          }
+                        />
+                      )}
+                    </th>
+                    <th scope="col" onClick={() => handleSort("profile_id")}>
+                      {" "}
+                      Profile{" "}
+                      {sortColumn === "profile_id" && (
+                        <FontAwesomeIcon
+                          icon={
+                            sortDirection === "ascending"
+                              ? faSortUp
+                              : faSortDown
+                          }
+                        />
+                      )}
+                    </th>
+                    <th scope="col" onClick={() => handleSort("description")}>
+                      {" "}
+                      Description{" "}
+                      {sortColumn === "description" && (
+                        <FontAwesomeIcon
+                          icon={
+                            sortDirection === "ascending"
+                              ? faSortUp
+                              : faSortDown
+                          }
+                        />
+                      )}
+                    </th>
 
-                      <th scope="col">Actions</th>
-                      <th>
-                        <label className="customcheckbox m-b-20">
-                          <input type="checkbox" id="mainCheckbox" />
-                        </label>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="customtable">
-                    {sortedData()
-                      .slice(offset, offset + itemsPerPage)
-                      .map((data, index) => (
-                        <tr key={index}>
-                          <td>{data._id}</td>
-                          <td>{data.skills}</td>
-                          <td>{data.profile.profile}</td>
-                          <td>{data.profile_id}</td>
-                          <td>{data.description}</td>
-                          <td>
-                            <div class="editdelete">
-                              <button
-                                className="editButton bt1"
-                                onClick={() =>
-                                  DeleteData(data._id) + window.location.reload()
-                                }
-                              >
-                                {" "}
-                                <FontAwesomeIcon icon={faTrash} />
-                              </button>
-                              <button
-                                className="editButton bt2"
-                                onClick={() => openModal(data._id)}
-                              >
-                                <FontAwesomeIcon icon={faEdit} />
-                              </button>
-                              <button
-                                className="editButton bt3"
-                                onClick={() => openModal1(data._id)}
-                                title="View Skill"
-                              >
-                                <FontAwesomeIcon icon={faEye} />
-                              </button>
-                            </div>
-                          </td>
-                          <td>
-                            <label className="customcheckbox">
-                              <input
-                                type="checkbox"
-                                className="listCheckbox"
-                                onChange={(e) =>
-                                  handleCheckboxChange(e, data._id)
-                                }
-                              />
-                              <span className="checkmark"></span>
-                            </label>
-                          </td>
-                          <ModalBox
-                            isOpen={modalIsOpen}
-                            skillId={selectedskillId}
-                            onRequestClose={closeModal}
-                          >
-                            <h2>Modal Title</h2>
-                            <p>Modal Content</p>
-                          </ModalBox>
-                          {modalIsOpen1 && modalData && (
-                            <div className="modal-overlay">
-                              <div className="modal-content" style={{ width: "40%", margin: "auto" }}>
-                                <h4>Skill Details</h4>
-                                <p><strong>Skill:</strong> {modalData.skills}</p>
-                                <p><strong>Profile:</strong> {modalData.profile?.profile}</p>
-                                <p><strong>Profile ID:</strong> {modalData.profile_id}</p>
-                                <p><strong>Description:</strong> {modalData.description}</p>
-                                <button onClick={closeModal1} className="btn btn-secondary">
-                                  Close
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-                <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
-                  breakLabel={"..."}
-                  pageCount={pageCount}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  onPageChange={handlePageChange}
-                  containerClassName={"pagination"}
-                  activeClassName={"active"}
-                />
-              </div>
+                    <th scope="col">Actions</th>
+                    <th>
+                      <label className="customcheckbox m-b-20">
+                        <input type="checkbox" id="mainCheckbox" />
+                      </label>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="customtable">
+                  {sortedData()
+                    .slice(offset, offset + itemsPerPage)
+                    .map((data, index) => (
+                      <tr key={index}>
+                        <td>{data._id}</td>
+                        <td>{data.skills}</td>
+                        <td>{data.profile.profile}</td>
+                        <td>{data.profile_id}</td>
+                        <td>{data.description}</td>
+                        <td>
+                          <div class="editdelete">
+                            <button
+                              className="editButton bt1"
+                              onClick={() =>
+                                DeleteData(data._id) + window.location.reload()
+                              }
+                            >
+                              {" "}
+                              <FontAwesomeIcon icon={faTrash} />
+                            </button>
+                            <button
+                              className="editButton bt2"
+                              onClick={() => openModal(data._id)}
+                            >
+                              <FontAwesomeIcon icon={faEdit} />
+                            </button>
+                          </div>
+                        </td>
+                        <td>
+                          <label className="customcheckbox">
+                            <input
+                              type="checkbox"
+                              className="listCheckbox"
+                              onChange={(e) =>
+                                handleCheckboxChange(e, data._id)
+                              }
+                            />
+                            <span className="checkmark"></span>
+                          </label>
+                        </td>
+                        <ModalBox
+                          isOpen={modalIsOpen}
+                          skillId={selectedskillId}
+                          onRequestClose={closeModal}
+                        >
+                          <h2>Modal Title</h2>
+                          <p>Modal Content</p>
+                        </ModalBox>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageChange}
+                containerClassName={"pagination"}
+                activeClassName={"active"}
+              />
+            </div>
             )}
           </div>
           <div class="footdiv">
