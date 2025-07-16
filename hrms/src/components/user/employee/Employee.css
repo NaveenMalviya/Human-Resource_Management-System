@@ -1,0 +1,568 @@
+@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+body {
+    width: 100%;
+    background-color: #eeeeee;
+
+    /* font-family: 'Calibri', sans-serif !important; */
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    /* background-color: #eeeeee; */
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+.main1 {
+    width: 12%;
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+}
+
+.main2 {
+    background-color: #eeeeee;
+    margin-left: 12%;
+    width: 88%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.allcontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aqua; */
+    width: 100%;
+}
+
+.welcome {
+    background-color: #7d00aa;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.welcome h2 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.adddelButton {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    /* background-color: chocolate; */
+    padding: 10px;
+}
+
+
+.refreshButton,
+.backButton,
+.multiDeleteButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Make buttons circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.refreshButton {
+    background-color: #ffffff;
+    color: #7d00aa;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.backButton {
+    background-color: #7d00aa;
+    color: #ffffff;
+}
+
+.multiDeleteButton {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
+.refreshButton:hover,
+.backButton:hover,
+.multiDeleteButton:hover {
+    transform: scale(1.1);
+    /* Slightly enlarge on hover */
+}
+
+.mailAlert {
+    width: 90%;
+    border-radius: 10px;
+    padding: 20px 0px;
+    background-color: #7d00aa16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #7d00aa;
+    color: #7d00aa;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+}
+
+.tablediv {
+    /* background-color: green; */
+    width: 90%;
+    height: auto;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .table th,
+    .table td {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+    .table th,
+    .table td {
+        font-size: 10px;
+    }
+}
+
+
+.table th {
+    font-weight: 600;
+    background-color: #7d00aa;
+    color: #fff;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+}
+
+.table td:hover {
+    background-color: #f3f3f3;
+}
+
+.table th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.table th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.table .client-info {
+    display: flex;
+    align-items: center;
+}
+
+.table .client-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.table .client-info .name {
+    font-weight: 600;
+    color: #333;
+}
+
+.table .client-info .role {
+    font-size: 12px;
+    color: #888;
+}
+
+.table .status {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.table .status.approved {
+    background-color: #e0f7ea;
+    color: #28a745;
+}
+
+.table .status.pending {
+    background-color: #fff3cd;
+    color: #ffc107;
+}
+
+.table .status.denied {
+    background-color: #f8d7da;
+    color: #dc3545;
+}
+
+.table .status.expired {
+    background-color: #e2e3e5;
+    color: #6c757d;
+}
+
+/* Pagination Styles */
+.pagination {
+    /* background-color: #dc3545; */
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: -15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #ffffff;
+}
+
+
+
+.pagination a {
+    display: block;
+    padding: 6px 15px;
+    text-decoration: none;
+    color: #7d00aa;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+
+}
+
+.pagination a:hover {
+    background-color: #eaeaea;
+}
+
+.pagination .active a {
+    background-color: #7d00aa;
+    color: white;
+
+}
+
+.pagination .disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+/* Miscellaneous */
+.headerData {
+    color: white;
+    text-align: center;
+}
+
+
+
+.editdelete {
+    /* background-color: #dc3545; */
+    display: flex;
+    justify-content: space-around;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+
+}
+
+.editdelete .bt1 {
+    color: #ff0000;
+    transition: transform 0.2s ease;
+}
+
+.editdelete .bt2 {
+    color: #7d00aa;
+    transition: transform 0.2s ease;
+}
+
+.editdelete .bt3 {
+    color: #656565;
+    transition: transform 0.2s ease;
+}
+
+.editdelete .bt1:hover {
+    color: #ff9292;
+    transform: scale(1.1);
+}
+
+.editdelete .bt2:hover {
+    color: #dd80ff;
+    transform: scale(1.1);
+}
+
+.editdelete .bt3:hover {
+    color: #cdcdcd;
+    transform: scale(1.1);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+
+
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.AddButtonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddButton {
+    padding: 10px;
+    background-color: #7d00aa;
+    color: #fff;
+    border-radius: 4px;
+    transition: 0.4s;
+
+}
+
+.AddButton:hover {
+    background-color: #c290fe;
+}
+
+.customcheckbox {
+    margin-bottom: 0px;
+}
+
+.customcheckbox input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    padding-bottom: 0px;
+    position: relative;
+}
+
+.customcheckbox input[type="checkbox"]:checked {
+    background-color: #7d00aa;
+    border-color: #7d00aa;
+}
+
+.customcheckbox input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+
+    left: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.ReactModal {
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 0, 0);
+    overflow: auto;
+    border-radius: 8px;
+    outline: none;
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 12%;
+    width: 88%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ffffff;
+    border-top: 5px solid #7d00aa;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.custom-modal .modal-dialog {
+    max-width: 80%;
+    /* Adjust this to control modal width */
+    width: 80%;
+    /* Percentage of the viewport width */
+}
+
+.modal-body-custom {
+    overflow-x: auto;
+    /* Enables horizontal scroll if content overflows */
+}
+
+.employee-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.info-box {
+    background-color: #f4f2f2;
+    width: 48%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 40px;
+    transition: 0.3s ease-in-out;
+}
+
+.info-box:hover {
+    background-color: #000000;
+    color: #fff;
+    scale: 1.05;
+}
+
+.info-box button {
+    background-color: #7d00aa;
+    padding: 2px 8px;
+    color: #fff;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.info-box button:hover {
+    background-color: #ac5dc8;
+
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #7d00aa;
+}
+
+.pdfButton {
+    color: #7d00aa;
+    background: none;
+    width: 100%;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pdfButton:hover {
+    color: #edbcff;
+}
+
+.pdfButton2 {
+    color: #7d00aa;
+    background: none;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pdfButton2:hover {
+    color: #edbcff;
+}
+
+.clear-button {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+}
