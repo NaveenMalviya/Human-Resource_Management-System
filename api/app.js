@@ -58,6 +58,10 @@ app.use('/api', router);
 // Serve static files (like images)
 app.use(express.static('public'));
 
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running");
+});
+
 // Start server
 app.listen(port, () => {
    console.log(`🚀 Server running at http://localhost:${port}`);
