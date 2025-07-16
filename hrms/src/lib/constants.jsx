@@ -1,1 +1,1 @@
-export const BASE_API_URL = "https://human-resource-management-system-cy7o.onrender.com"
+export const BASE_API_URL = "http://localhost:5080/api/"
