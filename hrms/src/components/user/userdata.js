@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Nav from '../sidebar/sidebar';
 import { Link } from 'react-router-dom';
+import { BASE_API_URL } from "../../../lib/constants.jsx";
 
 const UserHome = () => {
   const [employeeCount, setEmployeeCount] = useState(0);
@@ -11,7 +12,7 @@ const UserHome = () => {
 
   useEffect(() => {
     // Fetch the total number of employees from the backend API
-    axios.get('http://localhost:5080/api/employee/count')  // Adjust the URL based on your API setup
+    axios.get(`${BASE_API_URL}employee/count`)  // Adjust the URL based on your API setup
       .then(response => {
         setEmployeeCount(response.data.count);  // Assuming the count is returned as { count: X }
       })
