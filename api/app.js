@@ -50,7 +50,11 @@ mongoose.connect(uri, {
 // Middleware
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors());
+app.use(cors(
+  {
+  origin: "https://humanresourcemanagementsystem.netlify.app"
+}
+));
 
 // API routes
 app.use('/api', router);
