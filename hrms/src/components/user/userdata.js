@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Nav from '../sidebar/sidebar';
 import { Link } from 'react-router-dom';
-import { BASE_API_URL } from "../../../lib/constants.jsx";
+
+import { BASE_API_URL } from '../../lib/constants';
 
 const UserHome = () => {
   const [employeeCount, setEmployeeCount] = useState(0);
