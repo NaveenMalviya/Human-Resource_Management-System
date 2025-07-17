@@ -38,7 +38,7 @@ const UserHome = () => {
       });
 
     // Fetch upcoming employee birthdays from the backend API
-    axios.get(`${BASE_API_URL}employee/upcomingEmployeeBirthday) // Adjust the URL based on your API setup
+    axios.get(`${BASE_API_URL}employee/upcomingEmployeeBirthday`) // Adjust the URL based on your API setup
       .then(response => {
         if (response.data.success) {
           setUpcomingBirthdays(response.data.data); // Assuming the data returned is in the format { data: [{ employee_first_name, employee_last_name, employee_dob }, ...] }
