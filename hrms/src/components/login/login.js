@@ -53,62 +53,72 @@ const Login = () => {
     e.preventDefault(); // Prevent the default form submission behavior
     if (validateForm()) {
       try {
-        const response = await fetch(`${BASE_API_URL}user/login_auth`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        });
+  console.log("➡ Sending login request...");
+  const response = await fetch(`${BASE_API_URL}user/login_auth`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(form),
+  });
 
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-          console.error("Expected JSON but received:", contentType);
-          setMsg("Unexpected server response.");
-          return;
-        }
+  console.log("⬅ Login response received");
+  const contentType = response.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    console.error("Expected JSON but received:", contentType);
+    setMsg("Unexpected server response.");
+    return;
+  }
 
-        const data = await response.json();
-        setMsg(data.msg); // Set message to show wrong password
+  const data = await response.json();
+  console.log("✅ Parsed login response:", data);
+  setMsg(data.msg);
 
-        if (response.ok) {
-          const authToken = data.authToken;
-          localStorage.setItem("token", authToken);
+  if (response.ok) {
+    const authToken = data.authToken;
+    localStorage.setItem("token", authToken);
 
-          const userResponse = await fetch(
-            `${BASE_API_URL}user/getuserbyid?userid=${data.user._id}`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: authToken,
-              },
-            }
-          );
-
-          if (!userResponse.ok) {
-            throw new Error("Failed to fetch user data");
-          }
-
-          const userData = await userResponse.json();
-          const name = `${userData.data.fname} ${userData.data.lname}`;
-          localStorage.setItem("_id", userData.data._id);
-          localStorage.setItem("name", name);
-          localStorage.setItem("email", userData.data.email);
-          localStorage.setItem("role", userData.data.role);
-
-          if (userData.data.role === "admin") {
-            navigate("/admin");
-          } else {
-            navigate("/user");
-          }
-        } else {
-          setMsg("Login failed, please check your Email or Password.");
-        }
-      } catch (error) {
-        console.error("Error occurred:", error);
-        setMsg("An error occurred during login.");
+    console.log("➡ Fetching user details...");
+    const userResponse = await fetch(
+      `${BASE_API_URL}user/getuserbyid?userid=${data.user._id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authToken,
+        },
       }
+    );
+
+    console.log("⬅ User details response received");
+
+    if (!userResponse.ok) {
+      const errText = await userResponse.text();
+      throw new Error("Failed to fetch user data: " + errText);
+    }
+
+    const userData = await userResponse.json();
+    console.log("✅ Parsed user data:", userData);
+
+    const name = `${userData.data.fname} ${userData.data.lname}`;
+    localStorage.setItem("_id", userData.data._id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", userData.data.email);
+    localStorage.setItem("role", userData.data.role);
+
+    if (userData.data.role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/user");
+    }
+  } else {
+    setMsg("Login failed, please check your Email or Password.");
+  }
+} catch (error) {
+  console.error("❌ Error occurred during login flow:", error);
+  setMsg("An error occurred during login.");
+}
+
     }
   };
 
