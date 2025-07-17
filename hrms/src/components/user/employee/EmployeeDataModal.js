@@ -3,6 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Employee.css"
+const BASE_API_URL = "https://human-resource-management-system-cy7o.onrender.com/";
+
 const EmployeeDataModal = ({ isOpen1, onRequestClose, data }) => {
     console.log('ModalComponent data:', data); // Debugging log
 
@@ -32,7 +34,7 @@ const EmployeeDataModal = ({ isOpen1, onRequestClose, data }) => {
 
 <div className="info-row">
     <div className="info-box"><strong>Employee ID:</strong>{employee_code}</div>
-    <div className="info-box"><strong>Profile Picture:</strong><img src={`http://localhost:5080/${image}`} onClick={() => window.open(`http://localhost:5080/${image}`, '_blank')} alt="Employee" className="profile-picture"/></div>
+    <div className="info-box"><strong>Profile Picture:</strong><img src={`${BASE_API_URL}${image}`} onClick={() => window.open(`${BASE_API_URL}${image}`, '_blank')} alt="Employee" className="profile-picture"/></div>
 
 </div> 
 <div className="info-row">
@@ -64,8 +66,8 @@ const EmployeeDataModal = ({ isOpen1, onRequestClose, data }) => {
     <div className="info-box"><strong>Experience:</strong>{employee_experience}</div>
 </div>
 <div className="info-row">
-    <div className="info-box"><strong>Resume:</strong>{employee_resume} <button  onClick={() => window.open(`http://localhost:5080/${employee_resume}`, '_blank')}>View</button></div>
-    <div className="info-box"><strong>ID Proof:</strong>{employee_id_proof}<button  onClick={() => window.open(`http://localhost:5080/${employee_id_proof}`, '_blank')}>View</button></div>
+    <div className="info-box"><strong>Resume:</strong>{employee_resume} <button  onClick={() => window.open(`${BASE_API_URL}${employee_resume}`, '_blank')}>View</button></div>
+    <div className="info-box"><strong>ID Proof:</strong>{employee_id_proof}<button  onClick={() => window.open(`${BASE_API_URL}${employee_id_proof}`, '_blank')}>View</button></div>
 </div>
 <div className="info-row">
     <div className="info-box"><strong>Permanent Address Proof:</strong>{employee_permanant_address_proof}</div>
@@ -80,11 +82,11 @@ const EmployeeDataModal = ({ isOpen1, onRequestClose, data }) => {
     <div className="info-box"><strong>Reference Two Mobile:</strong>{employee_reference_two_mobile}</div>
 </div>
 <div className="info-row">
-    <div className="info-box"><strong>PAN Card:</strong>{employee_pan_card}<button  onClick={() => window.open(`http://localhost:5080/${employee_pan_card}`, '_blank')}>View</button></div>
-    <div className="info-box"><strong>Marksheet:</strong>{employee_marksheet}<button  onClick={() => window.open(`http://localhost:5080/${employee_marksheet}`, '_blank')}>View</button></div>
+    <div className="info-box"><strong>PAN Card:</strong>{employee_pan_card}<button  onClick={() => window.open(`${BASE_API_URL}${employee_pan_card}`, '_blank')}>View</button></div>
+    <div className="info-box"><strong>Marksheet:</strong>{employee_marksheet}<button  onClick={() => window.open(`${BASE_API_URL}${employee_marksheet}`, '_blank')}>View</button></div>
 </div>
 <div className="info-row">
-    <div className="info-box"><strong>Experience Letter:</strong>{employee_experience_letter}<button  onClick={() => window.open(`http://localhost:5080/${employee_experience_letter}`, '_blank')}>View</button></div>
+    <div className="info-box"><strong>Experience Letter:</strong>{employee_experience_letter}<button  onClick={() => window.open(`${BASE_API_URL}${employee_experience_letter}`, '_blank')}>View</button></div>
 </div>
 
 
