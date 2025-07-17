@@ -3,7 +3,7 @@ import "./Employee.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios"; // For Axios
 import ModalBox from "./EditEmployeeModel.js";
-const BASE_API_URL = "https://human-resource-management-system-cy7o.onrender.com/";
+const BASE_API = "https://human-resource-management-system-cy7o.onrender.com/";
 import Nav from "../../sidebar/sidebar.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
@@ -1358,7 +1358,7 @@ const EmployeeModule = () => {
                             }}
                           >
                            <img
-  src={`${BASE_API_URL}${data.image}`} // Image URL
+  src={`${BASE_API}${data.image}`} // Image URL
   alt="Employee"
   style={{
     border: "2px solid #7d00aa",
