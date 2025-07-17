@@ -21,7 +21,7 @@ const UserHome = () => {
       });
 
     // Fetch the total number of candidates from the backend API
-    axios.get('http://localhost:5080/api/candidate/count')  // Adjust the URL based on your API setup
+    axios.get(`${BASE_API_URL}candidate/count`)  // Adjust the URL based on your API setup
       .then(response => {
         setCandidateCount(response.data.count);  // Assuming the count is returned as { count: X }
       })
@@ -29,7 +29,7 @@ const UserHome = () => {
         console.error('Error fetching candidate count:', error);
       });
     // Fetch the total number of candidates from the backend API
-    axios.get('http://localhost:5080/api/expenses/count')  // Adjust the URL based on your API setup
+    axios.get(`${BASE_API_URL}expenses/count`)  // Adjust the URL based on your API setup
       .then(response => {
         setExpensesCount(response.data.count);  // Assuming the count is returned as { count: X }
       })
@@ -38,7 +38,7 @@ const UserHome = () => {
       });
 
     // Fetch upcoming employee birthdays from the backend API
-    axios.get('http://localhost:5080/api/employee/upcomingEmployeeBirthday') // Adjust the URL based on your API setup
+    axios.get(`${BASE_API_URL}employee/upcomingEmployeeBirthday) // Adjust the URL based on your API setup
       .then(response => {
         if (response.data.success) {
           setUpcomingBirthdays(response.data.data); // Assuming the data returned is in the format { data: [{ employee_first_name, employee_last_name, employee_dob }, ...] }
