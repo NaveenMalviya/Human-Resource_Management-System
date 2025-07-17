@@ -1357,7 +1357,7 @@ const EmployeeModule = () => {
                             }}
                           >
                             <img
-                              src={`http://localhost:5080/${data.image}`} // Image URL
+                             src={`${BASE_API_URL}${data.image}`}// Image URL
                               alt="Employee"
                               style={{
                                 border: "2px solid #7d00aa",
@@ -1392,21 +1392,14 @@ const EmployeeModule = () => {
                           <td>{data.employee_mobile}</td>
                           <td>{data.employee_city}</td>
                           <td>
-                            <button
-                              className="pdfButton"
-                              onClick={() =>
-                                window.open(
-                                  `http://localhost:5080/${data.employee_resume}`,
-                                  "_blank"
-                                )
-                              }
-                              title="Show Pdf"
-                            >
-                              <FontAwesomeIcon
-                                style={{ fontSize: "24px" }}
-                                icon={faFilePdf}
-                              />
-                            </button>
+                           <button
+  className="pdfButton"
+  onClick={() =>
+    window.open(`${BASE_API_URL}${data.employee_resume}`, "_blank")
+  }
+>
+  View Resume
+</button>
                           </td>
                           <td>
                             <div class="editdelete">
