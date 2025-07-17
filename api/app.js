@@ -1,44 +1,13 @@
-// const express = require('express');
-// const router = require('./routes');
-// const bodyParser = require('body-parser');
-// const cors  = require('cors');
-// const mongoose = require('mongoose');
-// const app = express();
-// const port = 5080; 
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({"extended":true})),
-
-// app.use(cors());
-// app.use('/api', router);
-
-// // for image below
-// app.use(express.static('public' ));
-// app.use(bodyParser.json({ limit: '50mb' })); // Limit set here
-// app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // Limit set here
-
-// mongoose.connect('mongodb://localhost:27017/HRMS', {
-// //   useNewUrlParser: true,  
-//   serverSelectionTimeoutMS: 30000, // Set a higher timeout value (e.g., 30 seconds) 
-// });
-
-// app.listen(port, () => {
-//    console.log(`Example app listening at http://localhost:${port}`)
-// })
-
-
 const express = require('express');
 const router = require('./routes');
 const bodyParser = require('body-parser');
-const cors  = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-const port = 5080;
+const port = process.env.PORT || 5080;
 
-// 🔐 Use Mongoose with MongoDB Atlas
 const uri = "mongodb+srv://naveenmalviya:BenArc%4010s@cluster0.1oua50h.mongodb.net/HRMS?retryWrites=true&w=majority&appName=Cluster0";
 
-// ✅ Connect using Mongoose
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -47,26 +16,22 @@ mongoose.connect(uri, {
 .then(() => console.log("✅ Mongoose connected to MongoDB Atlas"))
 .catch(err => console.error("❌ Mongoose connection error:", err));
 
-// Middleware
+// Middlewares
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors(
-  {
-  origin: "https://humanresourcemanagementsystem.netlify.app"
-}
-));
 
-// API routes
-app.use('/api', router);
+// ✅ Allow both Netlify and local frontend
+app.use(cors({
+  origin: ["https://humanresourcemanagementsystem.netlify.app", "http://localhost:3000"]
+}));
 
-// Serve static files (like images)
+// Static files
 app.use(express.static('public'));
 
-app.get("/", (req, res) => {
-  res.send("✅ Backend is running");
-});
+// Routes
+app.use('/api', router);
 
 // Start server
 app.listen(port, () => {
-   console.log(`🚀 Server running at http://localhost:${port}`);
+  console.log(`🚀 Server running at http://localhost:${port}`);
 });
