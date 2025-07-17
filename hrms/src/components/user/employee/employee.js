@@ -3,7 +3,6 @@ import "./Employee.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios"; // For Axios
 import ModalBox from "./EditEmployeeModel.js";
-const BASE_API = "https://human-resource-management-system-cy7o.onrender.com/";
 import Nav from "../../sidebar/sidebar.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
@@ -61,6 +60,7 @@ const EmployeeModule = () => {
     setCurrentPage(selected); // Update the current page when pagination changes
   };
 
+const BASE_API = "https://human-resource-management-system-cy7o.onrender.com/";
   const itemsPerPage = 10; // Number of items to display per page
   const offset = currentPage * itemsPerPage;
   const pageCount = Math.ceil(tableData.length / itemsPerPage);
